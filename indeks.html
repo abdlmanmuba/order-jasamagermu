@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Print & Digital - Landing Page Luxury</title>
+    <style>
+        /* Reset dan Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif; /* Ganti dengan font luxury seperti serif jika perlu, tapi tetap modern */
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a1a, #4a4a4a); /* Gradien hitam-ke-abu gelap untuk nuansa luxury */
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000000, #FFD700); /* Hitam ke emas untuk luxury */
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700; /* Emas */
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 2rem 2rem;
+            background: linear-gradient(135deg, #2c3e50, #8e44ad); /* Biru tua ke ungu untuk luxury modern */
+            color: white;
+            min-height: 80vh;
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 50%;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500); /* Gradien emas */
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Putih ke abu muda untuk kontras */
+        }
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        /* Tools Section */
+        .tools {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #8e44ad, #2c3e50); /* Ungu ke biru tua */
+            color: white;
+            text-align: center;
+        }
+        .tools h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .tool-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .tool-card button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .tool-card button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000, #FFD700);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Animasi */
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #000000;
+                width: 200px;
+                display: none;
+            }
+            nav ul.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ManPrint </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Solusi Cetak & Digital Eksklusif</h1>
+            <p>Kami menyediakan jasa print, fotocopy, banner, cetak foto, dan pembuatan website modernitas.</p>
+            <a href="#services" class="btn-primary">Jelajahi Layanan</a>
+        </div>
+        <div class="hero-image">
+            <img src="Foto Print.jpg" alt="Mesin Cetak Luxury" class="fade-in">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Layanan Premium Kami</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="Print.jpg" alt="Jasa Print">
+                <h3>Jasa Print</h3>
+                <p>Cetak dokumen berkualitas tinggi dengan sentuhan elegan dan harga terjangkau.</p>
+            </div>
+            <div class="service-card">
+                <img src="Fotocopy.jpg" alt="Fotocopy">
+                <h3>Fotocopy</h3>
+                <p>Layanan fotocopy cepat dan akurat dengan teknologi modern.</p>
+            </div>
+            <div class="service-card">
+                <img src="Banner.jpg" alt="Banner">
+                <h3>Banner</h3>
+                <p>Desain dan cetak banner promosi yang eye-catching dengan nuansa luxury.</p>
+            </div>
+            <div class="service-card">
+                <img src="Cetak Foto.jpg" alt="Cetak Foto">
+                <h3>Cetak Foto</h3>
+                <p>Cetak foto dengan resolusi tinggi untuk kenangan abadi yang elegan.</p>
+            </div>
+            <div class="service-card">
+                <img src="Website.jpg" alt="Pembuatan Website">
+                <h3>Pembuatan Website</h3>
+                <p>Website modern dan responsif dengan desain luxury untuk bisnis Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="tools">
+        <h2>Tools & Fitur Eksklusif</h2>
+        <div class="tool-grid">
+            <div class="tool-card">
+                <h3>Kalkulator Harga</h3>
+                <p>Hitung estimasi biaya cetak secara real-time dengan kalkulator interaktif.</p>
+                <button onclick="openModal('calculator')">Coba Sekarang</button>
+            </div>
+            <div class="tool-card">
+                <h3>Preview Banner</h3>
+                <p>Lihat desain banner sebelum cetak dengan editor online yang elegan.</p>
+                <button onclick="openModal('banner')">Preview</button>
+            </div>
+            <div class="tool-card">
+                <h3>Form Pemesanan Cepat</h3>
+                <p>Pesan jasa langsung melalui form interaktif yang mudah dan cepat.</p>
+                <button onclick="openModal('order')">Pesan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="calculator-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('calculator')">&times;</span>
+            <h3>Kalkulator Harga Cetak</h3>
+            <label>Jumlah Halaman / Ukuran (m2 untuk Banner):</label>
+            <input type="number" id="quantity" placeholder="Masukkan jumlah halaman atau ukuran m2" min="1">
+            <label>Jenis Layanan:</label>
+            <select id="service-type" onchange="toggleSizeInput()">
+                <option value="print">Print (Rp 500/hlm)</option>
+                <option value="photocopy">Fotocopy (Rp 300/hlm)</option>
+                <option value="banner">Banner (Rp 10,000/m2)</option>
+            </select>
+            <button onclick="calculatePrice()">Hitung</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <div id="banner-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('banner')">&times;</span>
+            <h3>Preview Banner</h3>
+            <label>Teks Banner:</label>
+            <input type="text" id="banner-text" placeholder="Masukkan teks" oninput="updatePreview()">
+            <label>Warna Teks:</label>
+            <input type="color" id="text-color" value="#FFD700" oninput="updatePreview()">
+            <label>Ukuran Teks:</label>
+            <input type="range" id="text-size" min="20" max="50" value="30" oninput="updatePreview()">
+            <div id="banner-preview">Preview akan muncul di sini</div>
+        </div>
+    </div>
+
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('order')">&times;</span>
+            <h3>Form Pemesanan Cepat</h3>
+            <label>Nama:</label>
+            <input type="text" id="name" placeholder="Nama Anda">
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Email Anda">
+            <label>Layanan:</label>
+            <select id="order-service">
+                <option value="print">Print</option>
+                <option value="photocopy">Fotocopy</option>
+                <option value="banner">Banner</option>
+                <option value="photo">Cetak Foto</option>
+                <option value="website">Pembuatan Website</option>
+            </select>
+            <label>Detail:</label>
+            <textarea id="details" placeholder="Deskripsikan pesanan Anda"></textarea>
+            <button onclick="submitOrder()">Kirim Pesanan</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; ManPrint. Hubungi kami di info rahmanmubarok57@gmail.com | +62856 5562 7217</p>
+    </footer>
+
+    <script>
+        // Fungsi Modal
+        function openModal(type) {
+            document.getElementById(type + '-modal').style.display = 'flex';
+        }
+        function closeModal(type) {
+            document.getElementById(type + '-modal').style.display = 'none';
+        }
+
+        // Toggle input untuk banner
+        function toggleSizeInput() {
+            const service = document.getElementById('service-type').value;
+            const quantityInput = document.getElementById('quantity');
+            if (service === 'banner') {
+                quantityInput.placeholder = 'Masukkan ukuran dalam m2';
+            } else {
+                quantityInput.placeholder = 'Masukkan jumlah halaman';
+            }
+        }
+
+        // Kalkulator Harga
+        function calculatePrice() {
+            const quantity = parseFloat(document.getElementById('quantity').value) || 0;
+            const service = document.getElementById('service-type').value;
+            let pricePerUnit = 0;
+            let unit = '';
+            if (service === 'print') {
+                pricePerUnit = 500;
+                unit = 'hlm';
+            } else if (service === 'photocopy') {
+                pricePerUnit = 300;
+                unit = 'hlm';
+            } else if (service === 'banner') {
+                pricePerUnit = 10000;
+                unit = 'm2';
+            }
+            if (quantity <= 0) {
+                document.getElementById('result').innerText = 'Masukkan jumlah yang valid!';
+                return;
+            }
+            const total = quantity * pricePerUnit;
+            document.getElementById('result').innerText = `Total Biaya: Rp ${total.toLocaleString('id-ID')} (${quantity} ${unit})`;
+        }
+
+        // Preview Banner
+        function updatePreview() {
+            const text = document.getElementById('banner-text').value;
+            const color = document.getElementById('text-color').value;
+            const size = document.getElementById('text-size').value;
+            const preview = document.getElementById('banner-preview');
+            preview.innerHTML = `<div style="font-size: ${size}px; color: ${color}; font-weight: bold;">${text}</div>`;
+        }
+
+        // Form Pemesanan
+function submitOrder() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('order-service').value;
+    const details = document.getElementById('details').value;
+
+    if (!name || !email || !service) {
+        alert('Harap isi semua field!');
+        return;
+    }
+
+    const phoneNumber = '085655627217'; // nomor kamu (tanpa +)
+    const message = 
+        `Halo ManPrint,%0A%0A` +
+        `Nama: ${name}%0A` +
+        `Email: ${email}%0A` +
+        `Layanan: ${service}%0A` +
+        `Detail: ${details}`;
+
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+}
+
+        // Animasi scroll sederhana
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.service-card, .tool-card');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Inisialisasi untuk animasi
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.service-card, .tool-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s, transform 0.5s';
+            });
+        });
+    </script>
+</body>
+</html>
